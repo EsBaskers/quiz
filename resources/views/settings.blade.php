@@ -31,12 +31,12 @@
                 </svg>
             </button>
             <div class="profile-dropdown">
-                <a href="/profile" class="dropdown-item">My Profile</a>
-                <a href="/settings" class="dropdown-item">Account Settings</a>
+                <a href="/profile" class="dropdown-item">Mans profils</a>
+                <a href="/settings" class="dropdown-item">Profila iestatījumi</a>
                 <hr class="dropdown-divider">
                 <form action="/logout" method="GET" style="margin: 0;">
                     @csrf
-                    <button type="submit" class="dropdown-item logout-item">Logout</button>
+                    <button type="submit" class="dropdown-item logout-item">Izlogoties</button>
                 </form>
             </div>
         </div>
@@ -63,14 +63,20 @@
 <div class="quiz-wrapper">
     <div class="quiz-header">
         <div>
-            <div class="quiz-label">Preferences</div>
-            <h1 class="quiz-title" style="font-size: 2rem;">Account Settings</h1>
+            <div class="quiz-label">Iestatījumi</div>
+            <h1 class="quiz-title" style="font-size: 2rem;">Konta iestatījumi</h1>
         </div>
     </div>
 
     <div class="question-card">
-        <form method="POST" class="auth-form">
+        <form method="POST" action="{{ route('settings.update') }}" class="auth-form">
             @csrf
+            
+            @if (session('success'))
+                <div style="background: rgba(26, 122, 74, 0.1); border: 1.5px solid var(--correct); border-radius: 3px; padding: 1rem; margin-bottom: 1.2rem;">
+                    <p style="color: var(--correct); font-size: 0.9rem; margin: 0;">✓ {{ session('success') }}</p>
+                </div>
+            @endif
             
             @if ($errors->any())
                 <div class="error-message">
@@ -83,73 +89,73 @@
             @endif
 
             <div style="margin-bottom: 2rem;">
-                <div class="q-number">Account Settings</div>
+                <div class="q-number">Konta iestatījumi</div>
                 
                 <div class="form-group" style="margin-top: 1rem;">
-                    <label for="name" class="form-label">Username</label>
+                    <label for="name" class="form-label">Lietotājvārds</label>
                     <input 
                         id="name"
                         type="text"
                         name="name" 
                         value="{{ Auth::user()->name }}"
                         class="form-input"
-                        placeholder="Your username"
+                        placeholder="Jums lietotājvārds"
                     >
                 </div>
 
                 <div class="form-group">
-                    <label for="email" class="form-label">Email</label>
+                    <label for="email" class="form-label">E-pasts</label>
                     <input 
                         id="email"
                         type="email" 
                         name="email" 
                         value="{{ Auth::user()->email }}"
                         class="form-input"
-                        placeholder="Your email"
+                        placeholder="Jums e-pasts"
                     >
                 </div>
             </div>
 
             <div style="margin-bottom: 2rem;">
-                <div class="q-number">Change Password</div>
+                <div class="q-number">Maiņīt paroli</div>
                 
                 <div class="form-group" style="margin-top: 1rem;">
-                    <label for="current_password" class="form-label">Current Password</label>
+                    <label for="current_password" class="form-label">Pareižie parole</label>
                     <input 
                         id="current_password"
                         type="password" 
                         name="current_password"
                         class="form-input"
-                        placeholder="Enter current password"
+                        placeholder="Ievadiet pareizo paroli"
                     >
                 </div>
 
                 <div class="form-group">
-                    <label for="new_password" class="form-label">New Password</label>
+                    <label for="new_password" class="form-label">Jauna parole</label>
                     <input 
                         id="new_password"
                         type="password" 
                         name="new_password"
                         class="form-input"
-                        placeholder="Enter new password"
+                        placeholder="Ievadiet jaunu paroli"
                     >
                 </div>
 
                 <div class="form-group">
-                    <label for="password_confirmation" class="form-label">Confirm Password</label>
+                    <label for="password_confirmation" class="form-label">Apstipriniet paroli</label>
                     <input 
                         id="password_confirmation"
                         type="password" 
                         name="password_confirmation"
                         class="form-input"
-                        placeholder="Confirm new password"
+                        placeholder="Apstipriniet jauno paroli"
                     >
                 </div>
             </div>
 
             <div class="actions">
-                <a href="/profile" class="btn btn-ghost">← Back</a>
-                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <a href="/profile" class="btn btn-ghost">← Atpakaļ</a>
+                <button type="submit" class="btn btn-primary">Saglabāt izmaiņas</button>
             </div>
         </form>
     </div>

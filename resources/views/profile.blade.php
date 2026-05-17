@@ -5,6 +5,7 @@
 @section('content')
 <nav class="navbar">
     <div class="navbar-container">
+        <a href="/" class="btn btn-ghost" style="text-decoration: none;">← Sākums</a>
         <h1 class="quiz-title">Lab<span>tit</span></h1>
         <div class="navbar-controls">
             <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">
@@ -31,12 +32,12 @@
                 </svg>
             </button>
             <div class="profile-dropdown">
-                <a href="/profile" class="dropdown-item">My Profile</a>
-                <a href="/settings" class="dropdown-item">Account Settings</a>
+                <a href="/profile" class="dropdown-item">Mans profils</a>
+                <a href="/settings" class="dropdown-item">Profila iestatījumi</a>
                 <hr class="dropdown-divider">
                 <form action="/logout" method="GET" style="margin: 0;">
                     @csrf
-                    <button type="submit" class="dropdown-item logout-item">Logout</button>
+                    <button type="submit" class="dropdown-item logout-item">Izlogoties</button>
                 </form>
             </div>
         </div>
@@ -63,24 +64,24 @@
 <div class="quiz-wrapper">
     <div class="quiz-header">
         <div>
-            <div class="quiz-label">Account</div>
-            <h1 class="quiz-title" style="font-size: 2rem;">My Profile</h1>
+            <div class="quiz-label">Konts</div>
+            <h1 class="quiz-title" style="font-size: 2rem;">Mans profils</h1>
         </div>
     </div>
 
     <div class="question-card">
-        <div class="q-number">User Information</div>
+        <div class="q-number">Lietotāja informācija</div>
         <div style="margin-top: 1rem;">
             <div style="margin-bottom: 1.2rem;">
-                <label class="form-label">Username</label>
+                <label class="form-label">Lietotājvārds</label>
                 <p style="padding: 0.75rem; background: var(--paper); border-radius: 3px; margin-top: 0.4rem;">{{ Auth::user()->name }}</p>
             </div>
             <div style="margin-bottom: 1.2rem;">
-                <label class="form-label">Email</label>
+                <label class="form-label">E-pasts</label>
                 <p style="padding: 0.75rem; background: var(--paper); border-radius: 3px; margin-top: 0.4rem;">{{ Auth::user()->email }}</p>
             </div>
             <div style="margin-bottom: 1.2rem;">
-                <label class="form-label">Member Since</label>
+                <label class="form-label">Dalībnieks kopš</label>
                 <p style="padding: 0.75rem; background: var(--paper); border-radius: 3px; margin-top: 0.4rem;">{{ Auth::user()->created_at->format('F d, Y') }}</p>
             </div>
         </div>

@@ -3,11 +3,33 @@
 @section('title', 'Register - Quiz')
 
 @section('content')
+    <div style="position: fixed; top: 1rem; left: 1rem; z-index: 1000;">
+        <a href="/" class="btn btn-ghost" style="text-decoration: none; display: inline-flex; align-items: center;">← Sākums</a>
+    </div>
+    <div style="position: fixed; top: 1rem; right: 1rem; z-index: 1000;">
+    <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">
+        <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+</div>
+
 <div class="quiz-wrapper">
     <div class="quiz-header">
         <div>
-            <div class="quiz-label">Join Us</div>
-            <h1 class="quiz-title">Create Account</h1>
+            <div class="quiz-label">Pievienojieties mums</div>
+            <h1 class="quiz-title">Izveidot kontu</h1>
         </div>
     </div>
 
@@ -26,7 +48,7 @@
             @endif
 
             <div class="form-group">
-                <label for="name" class="form-label">Username</label>
+                <label for="name" class="form-label">Lietotājvārds</label>
                 <input 
                     id="name"
                     type="text"
@@ -34,12 +56,12 @@
                     required 
                     value="{{ old('name') }}"
                     class="form-input"
-                    placeholder="Choose a username"
+                    placeholder="Izvēlieties lietotājvārdu"
                 >
             </div>
 
             <div class="form-group">
-                <label for="email" class="form-label">Email</label>
+                <label for="email" class="form-label">E-pasts</label>
                 <input 
                     id="email"
                     type="email" 
@@ -47,40 +69,40 @@
                     required 
                     value="{{ old('email') }}"
                     class="form-input"
-                    placeholder="Enter your email"
+                    placeholder="Ievadiet savu e-pastu"
                 >
             </div>
 
             <div class="form-group">
-                <label for="password" class="form-label">Password</label>
+                <label for="password" class="form-label">Parole</label>
                 <input 
                     id="password"
                     type="password" 
                     name="password"
                     required
                     class="form-input"
-                    placeholder="Create a password"
+                    placeholder="Izveidojiet paroli"
                 >
             </div>
 
             <div class="form-group">
-                <label for="password_confirmation" class="form-label">Confirm Password</label>
+                <label for="password_confirmation" class="form-label">Apstipriniet paroli</label>
                 <input 
                     id="password_confirmation"
                     type="password" 
                     name="password_confirmation"
                     required
                     class="form-input"
-                    placeholder="Confirm your password"
+                    placeholder="Apstipriniet savu paroli"
                 >
             </div>
 
-            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="submit" class="btn btn-primary">Reģistrēties</button>
         </form>
     </div>
 
     <div style="text-align: center; margin-top: 1.6rem;">
-        <p class="quiz-label">Already have an account? <a href="/login" style="color: var(--accent); text-decoration: none;">Login</a></p>
+        <p class="quiz-label">Jau ir konts? <a href="/login" style="color: var(--accent); text-decoration: none;">Pierakstīties</a></p>
     </div>
 </div>
 @endsection
